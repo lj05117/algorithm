@@ -1,0 +1,14 @@
+po=list(map(str,input()))
+if po[0]=='a' or po[0]=='h':
+    cnt=4
+    if po[1]=='1'or po[1]=='8':cnt-=2
+    elif po[1]=='2'or po[1]=='7':cnt-=1
+elif po[0]=='b' or po[0]=='g':
+    cnt=6
+    if po[1]=='1'or po[1]=='8':cnt-=3
+    elif po[1]=='2' or po[1]=='7':cnt-2
+else:
+    cnt=8
+    if po[1]=='1'or po[1]=='8':cnt-=4
+    elif po[1]=='2'or po[1]=='7':cnt-=2
+print(cnt)
