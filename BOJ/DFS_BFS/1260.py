@@ -1,34 +1,32 @@
 import sys
-def dfs(li,V,r,c,numli):
-    if V!=0:
-        print(V,end=" ")
-        numli.remove(V)
-    if not numli:return
-    if li[r][c] in numli:
-        print(li[r][c],end=" ")
-        numli.remove(li[r][c])
-        dfs(li,0,li[r][c],0,numli)
-    if len(li[r])-1>c:
-        dfs(li,0,r,c+1,numli)
-    if r<len(li):
-        dfs(li,0,r+1,0,numli)
+from collections import defaultdict,deque
+def dfs(V):
+    if visited_node[V]:
+        return
+    visited_node[V]=1
+    print(V,end=" ")
+    for i in dic_N[V]:
+        dfs(i)
     
-        
 N,M,V=map(int,sys.stdin.readline().split())
-li=[[0]for i in range(N+1)]
-numli=[]
+dic_N=defaultdict(list)
 for i in range(M):
-    n1,n2=map(int,sys.stdin.readline().split())
-    if n1 not in numli:numli.append(n1)
-    if n2 not in numli:numli.append(n2)
-    if li[n1][0]==0:
-        li[n1][0]=n2
-    else:
-        li[n1].append(n2)
-        li[n1].sort()
-    if li[n2][0]==0:
-        li[n2][0]=n1
-    else:
-        li[n2].append(n1)
-        li[n2].sort()
-dfs(li,V,V,0,numli)
+    N1,N2=map(int,sys.stdin.readline().split())
+    dic_N[N1].append(N2)
+    dic_N[N2].append(N1)
+for i in dic_N.keys():
+    dic_N[i]=sorted(dic_N[i])
+visited_node=[0]*(N+1)
+dfs(V)
+print()
+queue=deque()
+queue.append(V)
+bfs_visited=[0]*(N+1)
+bfs_visited[V]=1
+while queue:
+    pop_queue=queue.popleft()
+    print(pop_queue,end=" ")
+    for i in dic_N[pop_queue]:
+        if not bfs_visited[i]:
+            queue.append(i)
+            bfs_visited[i]=1
