@@ -1,0 +1,11 @@
+N,K=map(int,input().split())
+A=list(map(int,input().split()))
+B=list(map(int,input().split()))
+for i in range(K):
+    minA=min(A)
+    maxB=max(B)
+    A.remove(minA)
+    B.remove(maxB)
+    A.append(maxB)
+    B.append(minA)
+print(sum(A))
