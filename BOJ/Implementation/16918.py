@@ -9,24 +9,27 @@ for i in range(R):
     for j in range(C):
         if board[i][j]=='O':
             position_O.append([i,j])
-
-if N%4==1:
-    for a in range(R):
-        for b in range(C):
-            print(board[a][b], end="")
-        print()
+if N%2==0:
+    board=[['O' for k in range(C)]for l in range(R)]
 else:
-    for k in range(R):
-        for l in range(C):
-            board[k][l]='O'
-    if N%2!=0:
+    while((N-1)//2!=0):
+        new_position=[]
+        board=[['O' for k in range(C)]for l in range(R)]
+        N-=2
         for d in range(len(position_O)):
             for c in range(5):
                 xpos=x[c]+position_O[d][0]
                 ypos=y[c]+position_O[d][1]
                 if 0<=xpos<R and 0<=ypos<C:
                     board[xpos][ypos]='.'
-    for e in range(R):
-        for d in range(C):
-            print(board[e][d], end="")
-        print()
+        for a in range(R):
+            for b in range(C):
+                if board[a][b]=='O':
+                    new_position.append([a,b])
+        position_O=new_position
+
+for e in range(R):
+    for d in range(C):
+        print(board[e][d], end="")
+    print()
+
