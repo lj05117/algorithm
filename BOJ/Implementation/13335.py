@@ -7,8 +7,11 @@ bridge=deque([0 for _ in range(w)])
 end_n=0
 while(end_n!=n):
     pass_time+=1
-    if sum(bridge)+a[count_n]<=L:
-        bridge.append(a[count_n])
+    if count_n<n:
+        if sum(bridge)+a[count_n]-bridge[0]<=L:
+            bridge.append(a[count_n])
+        else:
+            bridge.append(0)
     else:
         bridge.append(0)
     end=bridge.popleft()
