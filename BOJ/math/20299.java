@@ -8,6 +8,7 @@ public class Main{
 		// TODO Auto-generated method stub
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		String[] str=br.readLine().split(" "); 
+		StringBuilder sb=new StringBuilder();
 		int N=Integer.parseInt(str[0]); //신청한 동아리 수 입력
 		int S=Integer.parseInt(str[1]); //팀원 3명의 능력 합 가입 조건 
 		int M=Integer.parseInt(str[2]); //개인의 능력 가입 조건
@@ -35,20 +36,22 @@ public class Main{
 			}
 			if(ok && sum>=S) { // 개인능력도 되고, 팀원 능력도 조건에 부합하는가 
 				cnt+=1; //가능한 동아리 수 증가
-				visited[i]=true;  //출력할 배열 체크하기
+				if(cnt==1) sb.append(people[i][0]+" "+people[i][1]+" "+people[i][2]);
+				else sb.append(" "+people[i][0]+" "+people[i][1]+" "+people[i][2]);
 			}
 		}
 		
 		System.out.println(cnt);
-		for(int i=0;i<N;i++) {
-			if(visited[i] && i!=N-1) { //모든 조건에 부합하는가
-				for(int j=0;j<3;j++) {
-					System.out.print(people[i][j]+" "); //동아리원의 개인 능력 출력
-				}
-			}
-			if(visited[i] && i==N-1) {
-				System.out.print(people[i][0]+" "+people[i][1]+" "+people[i][2]);
-			}
-		}
+		System.out.println(sb.toString());
+//		for(int i=0;i<N;i++) {
+//			if(visited[i] && i!=N-1) { //모든 조건에 부합하는가
+//				for(int j=0;j<3;j++) {
+//					System.out.print(people[i][j]+" "); //동아리원의 개인 능력 출력
+//				}
+//			}
+//			if(visited[i] && i==N-1) {
+//				System.out.print(people[i][0]+" "+people[i][1]+" "+people[i][2]);
+//			}
+//		}
 	}
 }
