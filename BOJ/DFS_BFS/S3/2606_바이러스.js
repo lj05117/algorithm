@@ -20,17 +20,29 @@ for (let i = 0; i < input.length; i++) {
 }
 
 //dfs 버전
-function dfs(num) {
+// function dfs(num) {
+//   answer++;
+//   visited[num] = true;
+//   for (let i = 0; i < linkedArr[num].length; i++) {
+//     if (!visited[linkedArr[num][i]]) {
+//       dfs(linkedArr[num][i]);
+//     }
+//   }
+// }
+
+// dfs(1);
+
+//bfs 버전
+const que = [1];
+while (que.length !== 0) {
+  let num = que.shift();
   answer++;
   visited[num] = true;
   for (let i = 0; i < linkedArr[num].length; i++) {
-    if (!visited[linkedArr[num][i]]) {
-      dfs(linkedArr[num][i]);
+    if (!visited[linkedArr[num][i]] && !que.includes(linkedArr[num][i])) {
+      que.push(linkedArr[num][i]);
     }
   }
 }
-
-dfs(1);
-//bfs 버전
 
 console.log(answer);
