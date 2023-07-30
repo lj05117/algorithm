@@ -33,6 +33,6 @@ function biggerIsGreater(w) {
   ].join("");
 }
 
-const INPUT = ["lmno", "dcba", "dcbb", "abdc", "abcd", "fedcbabcd"];
+const input = ["lmno", "dcba", "dcbb", "abdc", "abcd", "fedcbabcd"];
 
-INPUT.map((i) => console.log(biggerIsGreater(i)));
+input.map((i) => console.log(biggerIsGreater(i)));
