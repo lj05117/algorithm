@@ -18,6 +18,7 @@ function solution(maps) {
 
     if (x === N - 1 && y === M - 1) {
       answer = Math.min(answer, cnt);
+      continue;
     }
 
     for (let i = 0; i < 4; i++) {
@@ -31,7 +32,7 @@ function solution(maps) {
         maps[tempX][tempY] = 2;
       }
       //   else if (maps[tempX][tempY] === 2) {
-      //   for() // 만약 통과 못하면 방문한 곳이랑 이동 거리 계산해보기
+      //   for() // 만약 통과 못하면 방문한 곳이랑 이동 거리 계산해보기 - 다익스트라
       //   }
     }
   }
